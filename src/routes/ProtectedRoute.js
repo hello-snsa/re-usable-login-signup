@@ -1,21 +1,24 @@
-import { Route, Navigate } from 'react-router-dom';
+import { Route, Navigate, Outlet } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 
-const ProtectedRoute = ({ component: Component, ...rest }) => {
+const ProtectedRoute = ({ element: Component,path, ...props }) => {
   const accessToken = useSelector((state) => state.authReducer.accessToken);
 
-  return (
-    <Route
-      {...rest}
-      render={(props) =>
-        accessToken ? (
-          <Component {...props} />
-        ) : (
-          <Navigate to={{ pathname: '/login', state: { from: props.location } }} replace/>
-        )
-      }
-    />
-  );
+  return accessToken ? <Outlet /> : <Navigate to="/login" />;
+
+
+//   return (
+//     // <Route path="login" element={<Login />} />
+//     // <ProtectedRoute path="profile" component={<Profile />} />
+//         accessToken ? (
+//     <Route  path={path} element={<Component/>}/>
+       
+//         ) : (
+//           <Navigate to={{ pathname: '/login', state: { from: props.location } }} replace/>
+//         )
+      
+
+//   );
 };
 
 export default ProtectedRoute;
