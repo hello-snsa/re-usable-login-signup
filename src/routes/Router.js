@@ -12,7 +12,7 @@ export default function Router() {
             <Route path="login" element={<Login />} />
             <Route path="register" element={<Register />} />
             
-            <ProtectedRoute path="profile" element={<Profile />} />
+            <ProtectedRoute path="profile" component={<Profile />} />
         </Routes>
     )
 }
