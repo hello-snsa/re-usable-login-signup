@@ -3,6 +3,7 @@ import Router from './routes/Router';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { REFRESH_TOKEN } from './store/actions';
+import { Link } from 'react-router-dom';
 
 
 function App() {
@@ -23,6 +24,8 @@ function App() {
 
   return (
     <div className="App">
+      <Link to="/login">Login</Link>
+      <Link to="/profile">Profile</Link>
       <Router />
     </div>
   );
